@@ -1,6 +1,6 @@
 TEXFILE = plantilla
 
-all: compile view
+all: compile copy
 
 compile:
 	pdflatex ${TEXFILE}.tex
@@ -13,3 +13,6 @@ compile:
 
 view:
 	evince ${TEXFILE}.pdf
+
+copy:
+	cp ${TEXFILE}.PDF ../win
