@@ -5,27 +5,68 @@
 \set{\nombreDeLaUniversidad}{Universidad de Guadalajara}
 \set{\nombreDelDepartamento}{Departamento de electrónica}
 \set{\tipoDeActividad}{Reporte}
-\set{\tituloDelDocumento}{Plantilla Latex}
+\set{\tituloDelDocumento}{Plantilla \LaTeX}
 \set{\materia}{Automatizacion de actividades rutinarias}
 \set{\nombreDelAutor}{Eduardo Hao}
 \set{\emailDelAutor}{lalohao@elmejorproveedor.com}
 
 \init{}
 \documento{
-  \resumen{Se trató de simplificar algunas funciones de latex.}
+  \resumen{
 
-  \introduccion{Alguna referencia\cite{yonson98:_el}, junto con el esquematico\cite{pic16_datasheet}}
+    Se trató de simplificar algunas funciones de latex de manera que se
+    maximizará la utilizad y a la vez se redujera la complejidad de la
+    creación de un archivo \LaTeX .
 
-  \objetivo{\gls{pi} es un \gls{numero real}; $4$, $5$, y $6$ tambien son \glspl{numero real}, además \gls{lol} es un acrónimo.
+  }
 
-    Quizás después este documento sea aún mas sencillo \gls{lol}.}
+  \introduccion{
 
-  \desarrollo{}
+    Siempre es difícil aprender una nueva tecnología por lo que me
+    dispuse a realizar este pequeño documento que ayudará (a mi y espero
+    que a ustedes también) a crear fácilmente artículos.
 
-  \resultados{}
+  }
+
+  \objetivo{
+
+    Demostrar las capacidades de \LaTeX de una manera simple y eficiente.
+
+  }
+
+  \desarrollo{
+
+    Ver {glosario.tex, bibliografia.bib} para modificar el glosario y
+    bibliografía respectivamente.
+
+    Para darle otro formato al documento revisar el archivo estilo.tex
+
+  }
+
+  \resultados{
+
+    El uso de algunas referencias: por ejemplo esta cita
+    \cite{yonson98:_el}, o esta otra donde viene el esquemático
+    \cite{pic16_datasheet}
+
+
+
+    Glosarios:
+
+
+    \gls{pi} es un \gls{numero real}; $4$, $5$, y $6$ también son
+    \glspl{numero real}, además \gls{lol} es un acrónimo.
+
+    Quizás después este documento sea aún mas sencillo \gls{lol}.
+
+
+
+    Además claro esta lo básico como índice, ecuaciones y enlaces a
+    partes internas del documento
+
+  }
 
   \apendice{
-    Documento hecho en \LaTeX .
     \section{Código fuente}
     \code{hola.c}
   }
