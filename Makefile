@@ -15,4 +15,4 @@ view:
 	evince ${TEXFILE}.pdf
 
 copy:
-	cp ${TEXFILE}.PDF ../win
+	cp ${TEXFILE}.pdf ../win
