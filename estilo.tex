@@ -117,4 +117,11 @@
     \newacronym[see={[\glossaryName:]{gls-#3}},#2]{#3}{#4}{#5\glsadd{gls-#3}}
 }
 
+\DeclareDocumentCommand{\newgl}{m m m}{
+  \newglossaryentry{#1}{
+    name={#2},
+    description={#3}
+  }
+}
+
 % Local IspellDict: espanol
