@@ -1,4 +1,4 @@
-TEXFILE = plantilla
+TEXFILE = ejemplo
 
 all: compile copy
 
