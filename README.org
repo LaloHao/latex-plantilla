@@ -1,0 +1,2 @@
+* Plantilla Latex
+  Se necesita emacs con org-mode.
