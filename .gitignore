@@ -6,10 +6,6 @@
 !figures/
 !figures/*
 !Makefile
-!README.md
-!bibliografia.bib
-!estilo.tex
-!glosario.tex
-!hola.c
-!plantilla.tex
-!plantilla.pdf
+!*.org
+!*.bib
+!*.pdf
