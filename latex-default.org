@@ -17,8 +17,9 @@
 
 #+LaTeX_HEADER: \usepackage[spanish]{babel}
 #+LaTeX_HEADER: \addto{\captionsspanish}{\renewcommand*{\contentsname}{Contenido}}
+#+LaTeX_HEADER: \renewcommand{\listingscaption}{Código}
 #+BEGIN_LaTeX
-  \set{\logoDeLaUniversidad}{/home/hao/dev/org/figures/UDG.png}
+  \set{\logoDeLaUniversidad}{/home/hao/dev/org/latex-plantilla/figures/UDG.png}
   \set{\largoDelLogo}{7cm}
   \set{\nombreDeLaUniversidad}{Universidad de Guadalajara}
   \set{\nombreDelDepartamento}{Departamento de electrónica}

@@ -1,23 +1,36 @@
-#+INCLUDE: "/home/hao/dev/org/latex-default.org" :lines "-17"
+#+INCLUDE: "/home/hao/dev/org/latex-plantilla/latex-default.org" :lines "-17"
 #+BEGIN_LaTeX
   \tipo{Reporte}
   \titulo{Plantilla}
   \materia{Automatizacion de actividades rutinarias}
   \resumen{Se simplificó la creacion de documentos \LaTeX{}.}
 #+END_LaTeX
-#+INCLUDE: "/home/hao/dev/org/latex-default.org" :lines "17-"
+#+INCLUDE: "/home/hao/dev/org/latex-plantilla/latex-default.org" :lines "17-"
 #+LaTeX_HEADER: \newminted{gnuplot}
+
+* Objetivo
+  Demostrar las capacidades de org-mode de una manera que la
+  utilización de código \LaTeX{} sea mínima.
 
 * Introducción
   Siempre es difícil aprender una nueva tecnología por lo que me
   dispuse a realizar este pequeño documento que ayudará (a mi y espero
   que a ustedes también) a crear artículos.
 
-* Objetivo
-  Demostrar las capacidades de org-mode de una manera que la
-  utilización de código \LaTeX{} sea mínima.
-
 * Desarrollo
+** Ecuaciones
+   Se pueden escribir símbolos /in-line/ como \Sigma o
+   s=\alpha+j\beta, o utilizar el formato original de \LaTeX
+   $$\pm\sqrt{3}$$ aunque para insertar algo mas complejo siempre se
+   puede recurrir a un ambiente especifico como en la necesidad de
+   escribir ecuaciones numeradas:
+   #+BEGIN_LaTeX
+   \begin{equation}\label{eq:numerada}
+   G(s)=\frac{1}{(s+1)^2}
+   \end{equation}
+   #+END_LaTeX
+   Es aquí donde los templates de org nos ayudan a llegar al meollo
+   directamente.
 ** Tablas
    Las tablas se pueden crear fácilmente escribiendo |columna1|columna2|
    Al presionar C-c Enter al final de la ultima barra |.
@@ -101,24 +114,27 @@
     |   1 |     0.2225 |       0.22 |
 
 ** Ejecución de código fuente
-** Inclusión de imágenes
-   #+CAPTION: Gráfica de una funcion con una variable independiente.
+   Emacs puede ejecutar directamente código fuente de distintos lenguajes de
+   programación, los resultados se insertan al documento
+   automáticamente:
+
+   El siguiente codigo en ANSI-C se evalua src_C[:exports both]{printf("Hola mundo!");} y da como resultado {{{results(=Hola mundo!=)}}}
+
+   Lo mismo podemos hacer con emacs-lisp, un lenguaje inspirado en
+   Lisp:
+   #+BEGIN_SRC emacs-lisp :exports both
+   (mapcar (lambda (x) (+ x 3)) '(2 4 6 8))
+   #+END_SRC
+
+   El resultado es:
+   #+RESULTS:
+   | 5 | 7 | 9 | 11 |
+
+   También se pueden generar imágenes e insertarlas:
+
+   #+NAME: grafica-1
    #+ATTR_LATEX: :float nil
-   #+RESULTS: grafica-1
-   [[file:figures/file2.png]]
-
-   #+CAPTION: Gráfica de una funcion con dos variables independientes.
-   #+ATTR_LATEX: :float nil
-   #+RESULTS: grafica-2
-   [[file:figures/file.png]]
-
-** Enlaces
-   Una referencia a un datasheet aqui \cite{pic16_datasheet}.
-
-* Apéndice
-  Código de la gráfica 1
-  #+NAME: grafica-1
-  #+begin_src gnuplot :exports both :var data=3dtest :file figures/file2.png
+   #+begin_src gnuplot :exports results :var data=3dtest :file figures/file2.png
       set title "z=x^2+y^2"
 
       set xlabel "X"
@@ -129,11 +145,12 @@
 
       set pm3d
       splot data u 1:2:3
-  #+end_src
+   #+end_src
 
-  Código de la gráfica 2
-  #+NAME: grafica-2
-  #+begin_src gnuplot :var data=basic-plot :exports both :file figures/file.png
+   #+BEGIN_listing
+   #+NAME: grafica-2
+   #+ATTR_LATEX: :float nil
+   #+begin_src gnuplot :var data=basic-plot :exports both :file figures/file.png
       set title "Grafica 2"
 
       set xlabel "X"
@@ -148,7 +165,23 @@
 
       plot data u 1:2 w p lw 2 title 'x vs. y1', \
            data u 1:3 w lp lw 1 title 'x vx. y2'
-  #+end_src
+   #+end_src
+   [[caption:][Código de GNUPlot para generar la figura 2]]
+   #+END_listing
+** Inclusión de imágenes
+   #+CAPTION: Gráfica de una función con una variable independiente.
+   #+LABEL: fig:gfx1
+   #+ATTR_LATEX: :float nil :width 10cm
+   #+RESULTS: grafica-1
+   [[file:figures/file2.png]]
 
+   #+CAPTION: Gráfica de una función con dos variables independientes.
+   #+LABEL: fig:gfx2
+   #+ATTR_LATEX: :float nil
+   #+RESULTS: grafica-2
+   [[file:figures/file.png]]
 
+** Enlaces
+   Una referencia a un datasheet aquí [[cite:pic16_datasheet]].
+* Apéndice
   #+BIBLIOGRAPHY: bibliografia.bib plain limit:t
