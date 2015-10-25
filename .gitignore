@@ -5,7 +5,6 @@
 !.gitignore
 !figures/
 !figures/*
-!Makefile
 !*.org
 !*.bib
 !*.pdf

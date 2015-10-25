@@ -1,0 +1,154 @@
+#+INCLUDE: "/home/hao/dev/org/latex-default.org" :lines "-17"
+#+BEGIN_LaTeX
+  \tipo{Reporte}
+  \titulo{Plantilla}
+  \materia{Automatizacion de actividades rutinarias}
+  \resumen{Se simplificó la creacion de documentos \LaTeX{}.}
+#+END_LaTeX
+#+INCLUDE: "/home/hao/dev/org/latex-default.org" :lines "17-"
+#+LaTeX_HEADER: \newminted{gnuplot}
+
+* Introducción
+  Siempre es difícil aprender una nueva tecnología por lo que me
+  dispuse a realizar este pequeño documento que ayudará (a mi y espero
+  que a ustedes también) a crear artículos.
+
+* Objetivo
+  Demostrar las capacidades de org-mode de una manera que la
+  utilización de código \LaTeX{} sea mínima.
+
+* Desarrollo
+** Tablas
+   Las tablas se pueden crear fácilmente escribiendo |columna1|columna2|
+   Al presionar C-c Enter al final de la ultima barra |.
+   Se convierte en esto:
+   #+CAPTION: Tabla básica
+   | Estudiante | Matemáticas | Física |
+   |------------+-------------+--------|
+   |            |             |        |
+
+   Agregando nuevos elementos a la tabla se puede notar que al brincar
+   a la siguiente columna con TAB se modifica automáticamente el tamaño
+   de la tabla.
+
+   #+CAPTION: La misma tabla básica con elementos extra
+   | Estudiante      | Matemáticas | Física |
+   |-----------------+-------------+--------|
+   | Johnson         |          13 |      9 |
+   | Felipe          |          15 |     14 |
+   | Huehuehuehueeee |          17 |     13 |
+
+*** Hojas de calculo
+    Las funciones de hoja de calculo permiten realizar cálculos desde
+    emacs sin recurrir a software externo, haciendo mas fluido la
+    creación del documento.
+
+    #+CAPTION: Promedio
+    | Estudiante   | Matemáticas | Física | Promedio |
+    |--------------+-------------+--------+----------|
+    | Johnson      |          13 |      9 |       11 |
+    | Felipe       |          15 |     14 |     14.5 |
+    | Huehuehuehue |          17 |     13 |       15 |
+    #+TBLFM: $4=vmean($2..$3)
+
+    #+CAPTION: Dos promedios
+    | Estudiante   | Matemáticas | Física | Promedio |
+    |--------------+-------------+--------+----------|
+    | Johnson      |          13 |      9 |       11 |
+    | Felipe       |          15 |     14 |     14.5 |
+    | Huehuehuehue |          17 |     13 |       15 |
+    |--------------+-------------+--------+----------|
+    | Promedio     |          15 |     12 |          |
+    #+TBLFM: $4=vmean($2..$3)::@5$2=vmean(@2$2..@4$2)::@5$3=vmean(@2$3..@4$3)
+
+    #+CAPTION: Función con una variable independiente
+    | x | f(x)=x^2 + 1 |
+    |---+--------------|
+    | 1 |            2 |
+    | 2 |            5 |
+    | 3 |           10 |
+    | 4 |           17 |
+    | 5 |           26 |
+    | 6 |           37 |
+    | 7 |           50 |
+    #+TBLFM: $2=$1 * $1 + 1
+
+    #+CAPTION: Función con dos variables independientes
+    #+NAME: 3dtest
+    | x |  y | z=f(x,y)=x^2+y^2 |
+    |---+----+------------------|
+    | 1 |  2 |                5 |
+    | 2 |  4 |               20 |
+    | 3 |  6 |               45 |
+    | 4 |  8 |               80 |
+    | 5 | 10 |              125 |
+    | 6 | 12 |              180 |
+    | 7 | 14 |              245 |
+    #+TBLFM: $2=$1 * 2::$3=$1^2 + $2^2
+
+    #+tblname: basic-plot
+    |   x |         y1 |         y2 |
+    |-----+------------+------------|
+    | 0.1 |      0.425 |      0.375 |
+    | 0.2 |     0.3125 |     0.3375 |
+    | 0.3 | 0.24999993 | 0.28333338 |
+    | 0.4 |      0.275 |    0.28125 |
+    | 0.5 |       0.26 |       0.27 |
+    | 0.6 | 0.25833338 | 0.24999993 |
+    | 0.7 | 0.24642845 | 0.23928553 |
+    | 0.8 |    0.23125 |     0.2375 |
+    | 0.9 | 0.23333323 |  0.2333332 |
+    |   1 |     0.2225 |       0.22 |
+
+** Ejecución de código fuente
+** Inclusión de imágenes
+   #+CAPTION: Gráfica de una funcion con una variable independiente.
+   #+ATTR_LATEX: :float nil
+   #+RESULTS: grafica-1
+   [[file:figures/file2.png]]
+
+   #+CAPTION: Gráfica de una funcion con dos variables independientes.
+   #+ATTR_LATEX: :float nil
+   #+RESULTS: grafica-2
+   [[file:figures/file.png]]
+
+** Enlaces
+   Una referencia a un datasheet aqui \cite{pic16_datasheet}.
+
+* Apéndice
+  Código de la gráfica 1
+  #+NAME: grafica-1
+  #+begin_src gnuplot :exports both :var data=3dtest :file figures/file2.png
+      set title "z=x^2+y^2"
+
+      set xlabel "X"
+      set xrange [1:7]
+
+      set ylabel "Y"
+      set yrange [1:14]
+
+      set pm3d
+      splot data u 1:2:3
+  #+end_src
+
+  Código de la gráfica 2
+  #+NAME: grafica-2
+  #+begin_src gnuplot :var data=basic-plot :exports both :file figures/file.png
+      set title "Grafica 2"
+
+      set xlabel "X"
+      set xrange [0:1]
+      set xtics 0,0.1,1
+
+
+      set ylabel "Y"
+      set yrange [0.2:0.5]
+      set ytics 0.2,0.05,0.5
+
+
+      plot data u 1:2 w p lw 2 title 'x vs. y1', \
+           data u 1:3 w lp lw 1 title 'x vx. y2'
+  #+end_src
+
+
+  #+BIBLIOGRAPHY: bibliografia.bib plain limit:t
