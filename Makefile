@@ -1,4 +1,5 @@
 TEXFILE = plantilla
+VIEWER = xdg-open
 
 all: compile view
 
@@ -12,4 +13,4 @@ compile:
 	pdflatex ${TEXFILE}.tex	
 
 view:
-	evince ${TEXFILE}.pdf
+	${VIEWER} ${TEXFILE}.pdf
