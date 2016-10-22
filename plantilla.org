@@ -10,10 +10,19 @@ meramente las ecuaciones, este documento fue generado con dicha
 herramienta y en el se muestran algunos ejemplos de uso, el código
 fuente de este pdf se encuentra en el archivo =plantilla.org=.
 #+END_abstract
-
+\newpage
 * Objetivo
   Facilitar la creación de reportes científicos \LaTeX{} que utilicen
   la /clase/ =IEEEtran=.
+* Justificación
+  En los trabajos de investigación es importante utilizar herramientas
+  que permitan tener un ambiente de trabajo fluido, las tareas mas
+  triviales (agregar una imagen, recolectar algún dato) pueden llegar
+  a consumir la mayor parte del tiempo; el tiempo es un recurso muy
+  valioso que puede ser utilizado para resolver mas problemas, los
+  métodos presentados en este documento son una recopilación de
+  diversas fuentes sumados a los experimentos realizados por cuenta
+  propia.
 
 * Instalación
 
@@ -25,7 +34,6 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
   #+END_SRC
 
   Recuerda agregar la ruta completa que apunte hacia el archivo.
-  \newpage
 * Teclas
   | C     | Ctrl       |
   | M     | Alt        |
@@ -33,37 +41,42 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
   | a     | a          |
   | A     | Shift+a    |
   | C-M-o | Ctrl+Alt+o |
+  \newpage
 * Estructura del documento
   #+CAPTION: Estructura general del documento.
   #+NAME: fig:estructura
+  #+ATTR_LATEX: :float
   [[file:figures/estructura.png]]
 ** Sección y subsección
 
    #+CAPTION: Las secciones se denotan con un asterisco. =C-Enter= crea una nueva seccion (o subseccion).
    #+NAME: fig:secciones
+   #+ATTR_LATEX: :float
    [[file:figures/seccion.png]]
 
    #+CAPTION: Se agrega un asterisco por cada subnivel. =M-Izquierda=, =M-Derecha= cambia de seccion a subseccion o viceversa.
    #+NAME: fig:subsecciones
+   #+ATTR_LATEX: :float
    [[file:figures/subseccion.png]]
-   \newpage
 *** Etiquetas
     Es posible añadir etiquetas especiales como =:no_export:= o
     =:no_title:= con el comando =org-set-tags=.
 
-    =:no_export:= evita que se exporte dicha sección incluyendo todo
-    su contenido.
+    =:no_export:= evita que se exporte la sección y su contenido.
 
     =:no_title:= evita que se exporte el titulo de la sección, el
     contenido de la sección si es exportado (ver [[*Apéndices y referencias.][Apéndices y referencias.]])
+    \newpage
 ** Titulo y autor
    #+CAPTION: Se utilizan las etiquetas =#+TITLE= y =#+AUTHOR= respectivamente.
    #+NAME: fig:tituloyautor
+   #+ATTR_LATEX: :float
    [[file:figures/tituloyautor.png]]
 ** Resumen
    #+CAPTION: El resumen se encierra dentro de un bloque =#+BEGIN_abstract= y =#END_abstract=.
    #+NAME: fig:resumen
    #+ATTR_LATEX: :width 8cm
+   #+ATTR_LATEX: :float
    [[file:figures/resumen.png]]
 
 ** Ecuaciones
@@ -74,6 +87,7 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
 
    #+CAPTION: Tambien se pueden numerar las ecuaciones con la etiqueta =#+NAME=
    #+NAME: fig:numerada
+   #+ATTR_LATEX: :float
    [[file:figures/numerada.png]]
 
    #+NAME: eq:ids
@@ -83,20 +97,23 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
 
    #+CAPTION: Se pueden visualizar los fragmentos \LaTeX{} presionando =C-c C-x C-l=.
    #+NAME: fig:ecuaciones
+   #+ATTR_LATEX: :float
    [[file:figures/ecuaciones.png]]
-   \newpage
 ** Tablas
 
    #+CAPTION: Las tablas se crean escribiendo el caracter barra en donde se quiera designar la separacion de columnas.
    #+NAME: fig:tabla1
+   #+ATTR_LATEX: :float
    [[file:figures/tabla1.png]]
 
    #+CAPTION: Al presionar =TAB= estando en la ultima columna la tabla se expande automaticamente permitiendo agregar mas campos.
    #+NAME: fig:tabla2
+   #+ATTR_LATEX: :float
    [[file:figures/tabla2.png]]
 
    #+CAPTION: =C-c Enter= crea un separador visible
    #+NAME: fig:ej-tabla
+   #+ATTR_LATEX: :float
    [[file:figures/ej_tabla.png]]
 
    #+CAPTION: Ejemplo de tabla
@@ -131,6 +148,7 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
 
    #+CAPTION: Emacs puede ejecutar directamente código fuente de distintos lenguajes de programación y exportarlo al documento con color.
    #+NAME: fig:codigo1
+   #+ATTR_LATEX: :float
    [[file:figures/codigo1.png]]
 
    src_C[:exports both]{printf("Hola mundo!");}
@@ -138,6 +156,7 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
 
    #+CAPTION: Para códigos de longitud mayor a 1 linea se colocan dentro de un bloque =#BEGIN_SRC= y =#END_SRC= poniendo como parametro el lenguaje.
    #+NAME: fig:codigo2
+   #+ATTR_LATEX: :float
    [[file:figures/codigo.png]]
 
    Maxima puede entregar los resultados directamente en \LaTeX{}:
@@ -150,16 +169,40 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
    #+RESULTS:
    $$-{{\left(\log e\,x+1\right)\,e^ {- \log e\,x }}\over{\log ^2e}}$$
 
-** Inclusión de imágenes
+** Enlaces e imágenes
 
-   #+CAPTION: Presionar =C-c C-l= despliega un menu para seleccionar la imagen que se desea incluir.
+   #+CAPTION: Presionar =C-c C-l= despliega un menu en el que se puede elegir el tipo de enlace a insertar. En este caso es un enlace al apendice del documento.
    #+NAME: fig:menu
    #+ATTR_LATEX: :float
    [[file:figures/menu.png]]
+
+   #+CAPTION: Las imagenes son un tipo de enlace, se agregan con =file:=.
+   #+NAME: fig:imagenes
+   #+ATTR_LATEX: :float
+   [[file:figures/imagenes.png]]
+
+   [[*Vídeos de emacs][Vídeos de emacs]]
+** Apéndices y referencias.
+
+   #+CAPTION: La etiqueta =#+BIBLIOGRAPHY= incluye el archivo donde se encuentra la bibliografia automaticamente. Agrega la etiqueta =:no_title:= (ver [[*Etiquetas][Etiquetas]]).
+   #+NAME: fig:referencias
+   #+ATTR_LATEX: :float
+   [[file:figures/referencias.png]]
+
+   #+CAPTION: Todas las secciones declaradas despues de usar el comando \LaTeX{} =appendices= son tratadas como parte del apendice. El nombre de la seccion donde se utilice el comando puede ser arbitrario siempre y cuando se agregue la etiqueta =:no_title:= (ver [[*Etiquetas][Etiquetas]]).
+   #+NAME: fig:apendice
+   #+ATTR_LATEX: :float
+   [[file:figures/apendice.png]]
+   \newpage
 ** Todo en uno
 
-   #+CAPTION: Los datos de las tablas estan a disposicion del lenguaje con el que se desee trabajar.
+   #+CAPTION: Los datos de la =formula= aplicada a la =tabla= son enviados dentro de un bloque =SRC= para crear una =imagen= que es =automaticamente= insertada.
+   #+NAME: fig:todo
+   #+ATTR_LATEX: :float
+   [[file:figures/todo-en-uno.png]]
+
    #+NAME: 3dtest
+   #+ATTR_LATEX: :float
    | x |  y | z=f(x,y)=x^2+y^2 |
    |---+----+------------------|
    | 1 |  2 |                5 |
@@ -188,18 +231,8 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
 
    #+CAPTION: Gráfica de una función con dos variables independientes.
    #+RESULTS:
+   #+ATTR_LATEX: :float
    [[file:figures/file.png]]
-** Enlaces
-   Enlace a ecuación [[eq:ids]]; enlace a bibliografía [[cite:pic16_datasheet]].
-** Apéndices y referencias.
-
-   #+CAPTION: La etiqueta =#+BIBLIOGRAPHY= incluye el archivo donde se encuentra la bibliografia automaticamente. Agrega la etiqueta =:no_title:= (ver [[*Etiquetas][Etiquetas]]).
-   #+NAME: fig:referencias
-   [[file:figures/referencias.png]]
-
-   #+CAPTION: Todas las secciones declaradas despues de usar el comando \LaTeX{} =appendices= son tratadas como parte del apendice. El nombre de la seccion donde se utilice el comando puede ser arbitrario siempre agregue la etiqueta =:no_title:= (ver [[*Etiquetas][Etiquetas]]).
-   #+NAME: fig:apendice
-   [[file:figures/apendice.png]]
 
 * Referencias                                                      :no_title:
   #+BIBLIOGRAPHY: bibliografia.bib plain limit:t
