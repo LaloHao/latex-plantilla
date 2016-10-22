@@ -1,0 +1,186 @@
+#+TITLE: Plantilla \LaTeX
+#+AUTHOR: Eduardo Vázquez (lalohao@gmail.com)
+#+LaTeX_CLASS: IEEEtran
+#+LANGUAGE: es
+
+#+BEGIN_abstract
+El editor de texto =emacs= se utiliza como una herramienta para
+generar reportes de investigación reduciendo el uso de \LaTeX{} a
+meramente las ecuaciones, este documento fue generado con dicha
+herramienta y en el se muestran algunos ejemplos de uso, el código
+fuente de este pdf se encuentra en el archivo =plantilla.org=.
+#+END_abstract
+
+* Objetivo
+  Facilitar la creación de reportes científicos \LaTeX{} que utilicen
+  la /clase/ =IEEEtran=.
+
+* Instalación
+
+  Carga la plantilla en emacs agregando lo siguiente a tu archivo de
+  configuración de emacs =init.el=.
+
+  #+BEGIN_SRC elisp
+  (load "plantilla.el")
+  #+END_SRC
+
+  Recuerda agregar la ruta completa que apunte hacia el archivo.
+  \newpage
+* Teclas
+  | C     | Ctrl       |
+  | M     | Alt        |
+  | S     | Windows    |
+  | a     | a          |
+  | A     | Shift+a    |
+  | C-M-o | Ctrl+Alt+o |
+  |       |            |
+* Estructura del documento
+  #+CAPTION: Estructura general del documento.
+  #+NAME: fig:estructura
+  [[file:figures/estructura.png]]
+** Sección y subseccion
+
+   #+CAPTION: Las secciones se denotan con un asterisco. =C-Enter= crea una nueva seccion (o subseccion).
+   #+NAME: fig:secciones
+   [[file:figures/seccion.png]]
+
+   #+CAPTION: Se agrega un asterisco por cada subnivel. =C-Izquierda=, =C-Derecha= cambia de seccion a subseccion o viceversa.
+   #+NAME: fig:subsecciones
+   [[file:figures/subseccion.png]]
+   \newpage
+** Titulo y autor
+   #+CAPTION: Se utilizan las etiquetas #+TITLE y #+AUTHOR respectivamente.
+   #+NAME: fig:tituloyautor
+   [[file:figures/tituloyautor.png]]
+** Resumen
+   #+CAPTION: El resumen se encierra dentro de un bloque =abstract=.
+   #+NAME: fig:resumen
+   #+ATTR_LATEX: :width 8cm
+   [[file:figures/resumen.png]]
+
+** Ecuaciones
+   Se pueden incluir símbolos directamente: \Sigma, s=\alpha+j\beta, o
+   utilizando las etiqueta de dolar $$ de \LaTeX{}:
+
+   $$\pm\sqrt{3}$$
+
+   #+CAPTION: Tambien se pueden numerar las ecuaciones con la etiqueta #+NAME
+   #+NAME: fig:numerada
+   [[file:figures/numerada.png]]
+
+   #+NAME: eq:ids
+   \begin{equation}
+   I_{DS}=K_p' \frac{W}{L}\left( V_{GS}-V_{TH} \right)^2
+   \end{equation}
+
+   #+CAPTION: Se pueden visualizar los fragmentos \LaTeX{} presionando =C-c C-x C-l=.
+   #+NAME: fig:ecuaciones
+   [[file:figures/ecuaciones.png]]
+   \newpage
+** Tablas
+
+   #+CAPTION: Las tablas se crean escribiendo el caracter barra en donde se quiera designar la separacion de columnas.
+   #+NAME: fig:tabla1
+   [[file:figures/tabla1.png]]
+
+   #+CAPTION: Al presionar =TAB= estando en la ultima columna la tabla se expande automaticamente permitiendo agregar mas campos.
+   #+NAME: fig:tabla2
+   [[file:figures/tabla2.png]]
+
+   #+CAPTION: =C-c Enter= crea un separador visible
+   #+NAME: fig:ej-tabla
+   [[file:figures/ej_tabla.png]]
+
+   #+CAPTION: Ejemplo de tabla
+   | Estudiante      | Matemáticas | Física |
+   |-----------------+-------------+--------|
+   | Johnson         |          13 |      9 |
+   | Felipe          |          15 |     14 |
+   | Katarina        |          17 |     13 |
+   \newpage
+** Hojas de calculo
+   #+CAPTION: Al colocar el cursor en alguna columna y presionar =C-c ?= se obtienen las coordenadas de dicha columna.
+   #+NAME: fig:calc1
+   [[file:figures/hoja_calculo1.png]]
+
+   #+CAPTION: Estas coordenadas se pueden utilizar en conjunto con la etiqueta #+TBLFM para realizar operaciones sobre las tablas.
+   #+NAME: fig:calc2
+   [[file:figures/hoja_calculo2.png]]
+
+   #+CAPTION: Ejemplo de hoja de cálculo
+   | Estudiante | Matemáticas | Física | Promedio |
+   |------------+-------------+--------+----------|
+   | Johnson    |          13 |      9 |       11 |
+   | Felipe     |          15 |     14 |     14.5 |
+   | Katarina   |          17 |     13 |       15 |
+   |------------+-------------+--------+----------|
+   | Promedio   |          15 |     12 |     13.5 |
+   #+TBLFM: $4=vmean($2..$3)::@5$2=vmean(@2$2..@4$2)::@5$3=vmean(@2$3..@4$3)
+   \newpage
+** Ejecución de código fuente
+
+   #+CAPTION: Emacs puede ejecutar directamente código fuente de distintos lenguajes de programación y exportarlo al documento con color.
+   #+NAME: fig:codigo1
+   [[file:figures/codigo1.png]]
+
+   src_C[:exports both]{printf("Hola mundo!");}
+   {{{results(=Hola mundo!=)}}}
+
+   #+CAPTION: Para códigos de longitud mayor a 1 linea se utiliza el bloque =SRC=
+   #+NAME: fig:codigo2
+   [[file:figures/codigo.png]]
+
+   Maxima puede entregar los resultados directamente en \LaTeX{}:
+
+   #+BEGIN_SRC maxima :exports both :results raw
+     f:x*e^(-x);
+     tex(integrate(f, x));
+   #+END_SRC
+
+   #+RESULTS:
+   $$-{{\left(\log e\,x+1\right)\,e^ {- \log e\,x }}\over{\log ^2e}}$$
+
+** Inclusión de imágenes
+
+   #+CAPTION: Presionar =C-c C-l= despliega un menu para seleccionar la imagen que se desea incluir.
+   [[file:figures/menu.png]]
+   \newpage
+** Todo en uno
+
+   #+CAPTION: Los datos de las tablas estan a disposicion del lenguaje con el que se desee trabajar.
+   #+NAME: 3dtest
+   | x |  y | z=f(x,y)=x^2+y^2 |
+   |---+----+------------------|
+   | 1 |  2 |                5 |
+   | 2 |  4 |               20 |
+   | 3 |  6 |               45 |
+   | 4 |  8 |               80 |
+   | 5 | 10 |              125 |
+   | 6 | 12 |              180 |
+   | 7 | 14 |              245 |
+   #+TBLFM: $2=$1 * 2::$3=$1^2 + $2^2
+
+   #+CAPTION: Código de gnuplot para gráficar directamente desde la tabla.
+   #+NAME: grafica-1
+   #+begin_src gnuplot :exports both :var data=3dtest :file figures/file.png
+      set title "z=x^2+y^2"
+
+      set xlabel "X"
+      set xrange [1:7]
+
+      set ylabel "Y"
+      set yrange [1:14]
+
+      set pm3d
+      splot data u 1:2:3
+   #+end_src
+
+   #+CAPTION: Gráfica de una función con dos variables independientes.
+   #+RESULTS:
+   [[file:figures/file.png]]
+** Enlaces
+   Enlace a ecuacion [[eq:ids]]; enlace a bibliografia [[cite:pic16_datasheet]].
+   #+BIBLIOGRAPHY: bibliografia.bib plain limit:t
+   \appendices
+* Videos de emacs
+  [[https://www.youtube.com/playlist?playnext=1&list=PLGSfBi-tTSsHTksfRwa9RTRx0wFbm--98]]
