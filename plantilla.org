@@ -38,7 +38,7 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
   #+CAPTION: Estructura general del documento.
   #+NAME: fig:estructura
   [[file:figures/estructura.png]]
-** Sección y subseccion
+** Sección y subsección
 
    #+CAPTION: Las secciones se denotan con un asterisco. =C-Enter= crea una nueva seccion (o subseccion).
    #+NAME: fig:secciones
@@ -47,7 +47,15 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
    #+CAPTION: Se agrega un asterisco por cada subnivel. =C-Izquierda=, =C-Derecha= cambia de seccion a subseccion o viceversa.
    #+NAME: fig:subsecciones
    [[file:figures/subseccion.png]]
-   \newpage
+*** Etiquetas
+    Es posible añadir etiquetas especiales como =:no_export:= o
+    =:no_title:= con el comando =org-set-tags=.
+
+    =:no_export:= evita que se exporte dicha sección incluyendo todo
+    su contenido.
+
+    =:no_title:= evita que se exporte el titulo de la sección, el
+    contenido de la sección si es exportado (ver [[*Apéndices y referencias.][Apéndices y referencias.]])
 ** Titulo y autor
    #+CAPTION: Se utilizan las etiquetas #+TITLE y #+AUTHOR respectivamente.
    #+NAME: fig:tituloyautor
@@ -179,8 +187,21 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
    #+RESULTS:
    [[file:figures/file.png]]
 ** Enlaces
-   Enlace a ecuacion [[eq:ids]]; enlace a bibliografia [[cite:pic16_datasheet]].
-   #+BIBLIOGRAPHY: bibliografia.bib plain limit:t
-   \appendices
-* Videos de emacs
+   Enlace a ecuación [[eq:ids]]; enlace a bibliografía [[cite:pic16_datasheet]].
+** Apéndices y referencias.
+
+   #+CAPTION: La etiqueta =#+BIBLIOGRAPHY= apunta al archivo donde se encuentra la bibliografia, agregua la etiqueta =:no_title:= (ver [[*Etiquetas][Etiquetas]]).
+   #+NAME: fig:referencias
+   [[file:figures/referencias.png]]
+
+   #+CAPTION: Todas las secciones declaradas despues de usar el comando \LaTeX{} =appendices= son tratadas como parte del apendice. El nombre de la seccion donde se utilice el comando puede ser arbitrario siempre agregue la etiqueta =:no_title:= (ver [[*Etiquetas][Etiquetas]]).
+   #+NAME: fig:apendice
+   [[file:figures/apendice.png]]
+
+* Referencias                                                      :no_title:
+  #+BIBLIOGRAPHY: bibliografia.bib plain limit:t
+
+* Apéndices                                                        :no_title:
+  \appendices
+* Vídeos de emacs
   [[https://www.youtube.com/playlist?playnext=1&list=PLGSfBi-tTSsHTksfRwa9RTRx0wFbm--98]]
