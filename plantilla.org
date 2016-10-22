@@ -1,5 +1,7 @@
+#+MACRO: NEWLINE @@latex:\\@@
 #+TITLE: Plantilla \LaTeX
-#+AUTHOR: Eduardo Vázquez (lalohao@gmail.com)
+#+SUBTITLE: Actividad #\infty{}
+#+AUTHOR: Eduardo Vázquez {{{NEWLINE}}} lalohao@gmail.com
 #+LaTeX_CLASS: IEEEtran
 #+LANGUAGE: es
 
