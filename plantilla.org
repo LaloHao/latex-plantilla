@@ -33,7 +33,6 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
   | a     | a          |
   | A     | Shift+a    |
   | C-M-o | Ctrl+Alt+o |
-  |       |            |
 * Estructura del documento
   #+CAPTION: Estructura general del documento.
   #+NAME: fig:estructura
@@ -44,9 +43,10 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
    #+NAME: fig:secciones
    [[file:figures/seccion.png]]
 
-   #+CAPTION: Se agrega un asterisco por cada subnivel. =C-Izquierda=, =C-Derecha= cambia de seccion a subseccion o viceversa.
+   #+CAPTION: Se agrega un asterisco por cada subnivel. =M-Izquierda=, =M-Derecha= cambia de seccion a subseccion o viceversa.
    #+NAME: fig:subsecciones
    [[file:figures/subseccion.png]]
+   \newpage
 *** Etiquetas
     Es posible añadir etiquetas especiales como =:no_export:= o
     =:no_title:= con el comando =org-set-tags=.
@@ -57,11 +57,11 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
     =:no_title:= evita que se exporte el titulo de la sección, el
     contenido de la sección si es exportado (ver [[*Apéndices y referencias.][Apéndices y referencias.]])
 ** Titulo y autor
-   #+CAPTION: Se utilizan las etiquetas #+TITLE y #+AUTHOR respectivamente.
+   #+CAPTION: Se utilizan las etiquetas =#+TITLE= y =#+AUTHOR= respectivamente.
    #+NAME: fig:tituloyautor
    [[file:figures/tituloyautor.png]]
 ** Resumen
-   #+CAPTION: El resumen se encierra dentro de un bloque =abstract=.
+   #+CAPTION: El resumen se encierra dentro de un bloque =#+BEGIN_abstract= y =#END_abstract=.
    #+NAME: fig:resumen
    #+ATTR_LATEX: :width 8cm
    [[file:figures/resumen.png]]
@@ -72,7 +72,7 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
 
    $$\pm\sqrt{3}$$
 
-   #+CAPTION: Tambien se pueden numerar las ecuaciones con la etiqueta #+NAME
+   #+CAPTION: Tambien se pueden numerar las ecuaciones con la etiqueta =#+NAME=
    #+NAME: fig:numerada
    [[file:figures/numerada.png]]
 
@@ -100,22 +100,25 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
    [[file:figures/ej_tabla.png]]
 
    #+CAPTION: Ejemplo de tabla
+   #+ATTR_LATEX: :float
    | Estudiante      | Matemáticas | Física |
    |-----------------+-------------+--------|
    | Johnson         |          13 |      9 |
    | Felipe          |          15 |     14 |
    | Katarina        |          17 |     13 |
-   \newpage
 ** Hojas de calculo
    #+CAPTION: Al colocar el cursor en alguna columna y presionar =C-c ?= se obtienen las coordenadas de dicha columna.
    #+NAME: fig:calc1
+   #+ATTR_LATEX: :float
    [[file:figures/hoja_calculo1.png]]
 
-   #+CAPTION: Estas coordenadas se pueden utilizar en conjunto con la etiqueta #+TBLFM para realizar operaciones sobre las tablas.
+   #+CAPTION: Estas coordenadas se pueden utilizar en conjunto con la etiqueta =#+TBLFM= para realizar operaciones sobre las tablas.
    #+NAME: fig:calc2
+   #+ATTR_LATEX: :float
    [[file:figures/hoja_calculo2.png]]
 
    #+CAPTION: Ejemplo de hoja de cálculo
+   #+ATTR_LATEX: :float
    | Estudiante | Matemáticas | Física | Promedio |
    |------------+-------------+--------+----------|
    | Johnson    |          13 |      9 |       11 |
@@ -124,7 +127,6 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
    |------------+-------------+--------+----------|
    | Promedio   |          15 |     12 |     13.5 |
    #+TBLFM: $4=vmean($2..$3)::@5$2=vmean(@2$2..@4$2)::@5$3=vmean(@2$3..@4$3)
-   \newpage
 ** Ejecución de código fuente
 
    #+CAPTION: Emacs puede ejecutar directamente código fuente de distintos lenguajes de programación y exportarlo al documento con color.
@@ -134,7 +136,7 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
    src_C[:exports both]{printf("Hola mundo!");}
    {{{results(=Hola mundo!=)}}}
 
-   #+CAPTION: Para códigos de longitud mayor a 1 linea se utiliza el bloque =SRC=
+   #+CAPTION: Para códigos de longitud mayor a 1 linea se colocan dentro de un bloque =#BEGIN_SRC= y =#END_SRC= poniendo como parametro el lenguaje.
    #+NAME: fig:codigo2
    [[file:figures/codigo.png]]
 
@@ -151,8 +153,9 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
 ** Inclusión de imágenes
 
    #+CAPTION: Presionar =C-c C-l= despliega un menu para seleccionar la imagen que se desea incluir.
+   #+NAME: fig:menu
+   #+ATTR_LATEX: :float
    [[file:figures/menu.png]]
-   \newpage
 ** Todo en uno
 
    #+CAPTION: Los datos de las tablas estan a disposicion del lenguaje con el que se desee trabajar.
@@ -190,7 +193,7 @@ fuente de este pdf se encuentra en el archivo =plantilla.org=.
    Enlace a ecuación [[eq:ids]]; enlace a bibliografía [[cite:pic16_datasheet]].
 ** Apéndices y referencias.
 
-   #+CAPTION: La etiqueta =#+BIBLIOGRAPHY= apunta al archivo donde se encuentra la bibliografia, agregua la etiqueta =:no_title:= (ver [[*Etiquetas][Etiquetas]]).
+   #+CAPTION: La etiqueta =#+BIBLIOGRAPHY= incluye el archivo donde se encuentra la bibliografia automaticamente. Agrega la etiqueta =:no_title:= (ver [[*Etiquetas][Etiquetas]]).
    #+NAME: fig:referencias
    [[file:figures/referencias.png]]
 
