@@ -5,13 +5,15 @@
 ;;; Code:
 (require 'ox-latex)
 
-(defvar ieeetran-class
-  '("IEEEtran" "\\documentclass[11pt]{IEEEtran}"
-    ("\\section{%s}" . "\\section*{%s}")
-    ("\\subsection{%s}" . "\\subsection*{%s}")
-    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-    ("\\paragraph{%s}" . "\\paragraph*{%s}")
-    ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+(setq ieeetran-class
+      '("IEEEtran" "\\documentclass[11pt]{/home/hao/dev/org/latex-plantilla/IEEEtran}
+                    \\usepackage[spanish,mexico]{babel}
+                    \\addto\\captionsspanish{\\renewcommand{\\contentsname}{Contenido}}"
+        ("\\section{%s}" . "\\section*{%s}")
+        ("\\subsection{%s}" . "\\subsection*{%s}")
+        ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+        ("\\paragraph{%s}" . "\\paragraph*{%s}")
+        ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 (add-to-list 'org-latex-classes ieeetran-class t)
 
