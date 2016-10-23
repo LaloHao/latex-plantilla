@@ -3,6 +3,7 @@
 ;; Author: Eduardo V. <hao@arch>
 ;; Keywords: extensions, tools
 ;;; Code:
+(require 'ox-latex)
 
 (defvar ieeetran-class
   '("IEEEtran" "\\documentclass[11pt]{IEEEtran}"
