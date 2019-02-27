@@ -17,13 +17,14 @@
 
 (add-to-list 'org-latex-classes ieeetran-class t)
 
+;; TODO: Find another way to remove a section
 (defun org-remove-headlines (backend)
   "Remove headlines with :no_title: tag."
-  (org-map-entries (lambda () (let ((beg (point)))
-                           (outline-next-visible-heading 1)
-                           (backward-char)
-                           (delete-region beg (point))))
-                   "no_export" tree)
+  ;; (org-map-entries (lambda () (let ((beg (point)))
+  ;;                          (outline-next-visible-heading 1)
+  ;;                          (backward-char)
+  ;;                          (delete-region beg (point))))
+  ;;                  "no_export" tree)
   (org-map-entries (lambda () (delete-region (point-at-bol) (point-at-eol)))
                    "no_title"))
 
